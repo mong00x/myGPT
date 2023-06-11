@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'my_opai_api'
-    'rest_api_framework'
+    'my_openai_api',
+    'rest_framework',
     
 ]
 
