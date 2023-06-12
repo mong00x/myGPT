@@ -1,12 +1,14 @@
 
 from django.urls import include, path
 from rest_framework import routers
-from .views import PromptViewSet
+from .views import PromptViewSet, ChatGPTView
 
 
 router = routers.DefaultRouter()
-router.register(r'prompts', PromptViewSet)
+router.register(r'prompts', PromptViewSet, basename='prompts')
+
 
 urlpatterns = [
-    path('', include(router.urls)),
-]
+    # ... your other url patterns ...
+    path('chat/', ChatGPTView.as_view(), name='chat-gpt'),
+] + router.urls
