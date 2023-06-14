@@ -8,9 +8,20 @@ import logging
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+import boto3
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# local
+# load_dotenv()
+# openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# server 
+client = boto3.client('lambda', region_name='ap-southeast-2')
+response = client.invoke(
+    FunctionName = 'getParameter',
+    InvocationType = 'RequestResponse',
+)
+openai.api_key = response['Payload'].read().decode('utf-8')
+
 print("key: ",openai.api_key)
 
 logger = logging.getLogger(__name__)
