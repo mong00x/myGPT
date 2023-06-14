@@ -6,6 +6,7 @@ from .serializer import PromptModelSerializer
 import openai
 import logging
 import os
+import json
 from dotenv import load_dotenv
 
 import boto3
@@ -20,7 +21,15 @@ response = client.invoke(
     FunctionName = 'getParameter',
     InvocationType = 'RequestResponse',
 )
-openai.api_key = response['Payload'].read().decode('utf-8')
+payload = json.loads(response['Payload'].read().decode('utf-8'))
+
+# Check if there's an error.
+if 'errorMessage' in payload:
+    print("Error in lambda execution")
+    print(payload['errorMessage'])
+else:
+    # If no errors, payload is your key.
+    openai.api_key = payload
 
 print("key: ",openai.api_key)
 
@@ -32,6 +41,7 @@ class PromptViewSet(viewsets.ModelViewSet):
     #prmpt view allows to create a CRUD API without specifying explicit methods for the functionality
     queryset = Prompt.objects.all() 
     serializer_class = PromptModelSerializer
+    
     
 class ChatGPTView(APIView):
     """
@@ -49,10 +59,14 @@ class ChatGPTView(APIView):
                     {"role": "system", "content": "You are a helpful, pattern-following assistant."},
                     {"role": "user", "content": prompt},
                 ],
-                temperature=0,
+                temperature=0.7,
             )
-            translated_text = response['choices'][0]['message']['content']
+            translated_text = response.choices[0].message
             return Response({"response": translated_text})
         except Exception as e:
             logger.exception(e) # Log the exception
             return Response({"error": str(e)}, status=500)
+
+
+
+
