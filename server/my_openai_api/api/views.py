@@ -31,7 +31,8 @@ else:
     # If no errors, payload is your key.
     openai.api_key = payload
 
-print("key: ",openai.api_key)
+if openai.api_key:
+    print("API key loaded successfully")
 
 logger = logging.getLogger(__name__)
 
