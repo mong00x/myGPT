@@ -1,0 +1,59 @@
+::-webkit-scrollbar {
+    width: 12px;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #33333333;
+    border-radius: 100px;
+
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #33333355;
+  }
+  html {
+    scroll-behavior: smooth;
+    background-color: #DFD5EC;
+    overflow: hidden;
+  }
+  
+  body{
+    background-color: transparent !important;
+    height:100vh;
+    overflow: hidden;
+
+  }
+
+  .patterned-circle {
+    position:absolute;
+    bottom:-3%;
+    right: -3%;
+    z-index: -1;
+    width: 56vw;
+    height: 60vh;
+    border-radius: 82% 100% 50% 73%;
+    background: radial-gradient(circle, transparent 25%, #DFD5EC  26%),linear-gradient(45deg, transparent 46%, #6750A4 47%, #6750A4 52%, transparent 53%), linear-gradient(135deg, transparent 46%, #6750A4 47%, #6750A4 52%, transparent 53%);
+        background-size: 2em 2em;
+        background-color: #DFD5EC;
+        opacity: 1
+}
+
+::-moz-selection { /* Code for Firefox */
+  color:white;
+  background: #44444475;
+}
+
+::selection {
+  color:white;
+  background: #44444475;
+}
+
+input::selection{
+  color:white;
+  background: #44444475;
+}
