@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'my_openai_api',
     'rest_framework',
-    
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -69,6 +71,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
@@ -125,3 +129,8 @@ STATIC_ROOT = '/path/to/static/files/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# cross origin resource sharing
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5173",
+]
