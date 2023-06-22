@@ -4,6 +4,20 @@ import axios from 'axios'
 
 const ChatInput = () => {
   // axios post 
+  // debounce
+  const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  };
+
+
   const sendMessage = () => {
     axios.post('http://localhost:8000/chat/', {
       prompt: 'Hi'
@@ -36,7 +50,7 @@ const ChatInput = () => {
         rounded='100'
       />
       <Button 
-        onClick={sendMessage}
+        onClick={debounce(sendMessage, 1000)}
         rounded='100' 
         bg='none' 
         w='14' 
