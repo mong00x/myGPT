@@ -1,7 +1,23 @@
 // import React from 'react'
-import { Flex, Button, Input, transition  } from "@chakra-ui/react"
+import { Flex, Button, Input  } from "@chakra-ui/react"
+import axios from 'axios'
 
 const ChatInput = () => {
+  // axios post 
+  const sendMessage = () => {
+    axios.post('http://localhost:8000/chat/', {
+      prompt: 'Hi'
+    })
+    .then((response) => {
+      console.log(response.data);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  
+
+
+
   return (
     <Flex 
       gap={4} 
@@ -19,7 +35,16 @@ const ChatInput = () => {
         py='7' 
         rounded='100'
       />
-      <Button rounded='100' bg='none' w='14' h='14' p='3' _hover={{bg:'#66666622'}} _active={{bg:'#66666644'}}>
+      <Button 
+        onClick={sendMessage}
+        rounded='100' 
+        bg='none' 
+        w='14' 
+        h='14' 
+        p='3' 
+        _hover={{bg:'#66666622'}}
+        _active={{bg:'#66666644'}} 
+      >
       <svg 
         width="48" 
         height="48"  
