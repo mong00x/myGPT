@@ -133,4 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # cross origin resource sharing
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
+    "https://master--musical-mousse-228605.netlify.app/"
 ]
