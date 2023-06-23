@@ -26,6 +26,19 @@ const ChatInput = ({ sendMessage, isLoading }) => {
     setMessage("");
   };
 
+  // SQL injection prevention
+  const handleInput = (event) => {
+    const { value } = event.target;
+    const regex = /['";]/gi;
+    if (regex.test(value)) {
+      const filteredValue = value.replace(regex, "");
+      setMessage(filteredValue);
+    } else {
+      setMessage(value);
+    }
+  };
+
+
   return (
     <form onSubmit={handleSendMessage}> 
       <Flex 
@@ -38,7 +51,7 @@ const ChatInput = ({ sendMessage, isLoading }) => {
       >
         <Input 
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={handleInput}
           placeholder="Type your message here" 
           border='2px'  
           borderColor='#dfd5ec33'
