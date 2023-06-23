@@ -5,6 +5,8 @@ import { Box, Container,Flex } from '@chakra-ui/react'
 import {useState} from 'react'
 import axios from 'axios'
 
+
+
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -21,9 +23,10 @@ function App() {
     addMessage("bot", "");  // Placeholder bot message
     setIsLoading(true);
 
-    // development
-    if (!Window.process.env.NODE_ENV || Window.process.env.NODE_ENV === 'development') {
-    axios.post('http://localhost:8000/chat/', { prompt: message })
+    
+    if (import.meta.env.MODE === 'development') {
+      // production
+      axios.post('https://chatbot-ai.herokuapp.com/chat/', { prompt: message })
       .then((response) => {
         // Replace the placeholder bot message with the actual response
         setMessages(prevMessages => {
@@ -35,9 +38,11 @@ function App() {
       }, (error) => {
         console.log(error);
       });
+    
     } else {
-      // production
-      axios.post('https://chatbot-ai.herokuapp.com/chat/', { prompt: message })
+
+    // development
+      axios.post('http://localhost:8000/chat/', { prompt: message })
       .then((response) => {
         // Replace the placeholder bot message with the actual response
         setMessages(prevMessages => {
