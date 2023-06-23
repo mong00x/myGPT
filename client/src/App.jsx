@@ -24,7 +24,7 @@ function App() {
     setIsLoading(true);
 
     
-    if (import.meta.env.MODE === 'development') {
+    if (import.meta.env.MODE === 'production') {
       // production
       axios.post('https://chatbot-ai.herokuapp.com/chat/', { prompt: message })
       .then((response) => {
