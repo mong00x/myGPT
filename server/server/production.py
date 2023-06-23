@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%!lo&h3=yhf41hu-iv2yp%)&8%7gx03wmjv=#m@7uzh_yzl!0b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [ '3.27.164.53', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [ 'myopenaiapi.net', 'www.myopenaiapi.net', '3.27.164.53', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -122,8 +122,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/path/to/static/files/'
+STATIC_URL = "static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -135,3 +140,4 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173",
     "https://master--musical-mousse-228605.netlify.app"
 ]
+
