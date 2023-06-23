@@ -54,8 +54,8 @@ const MessageField = ({messages, isLoading}) => {
           :(
             <Flex gap='4' py='4' flexDir='row' key={index}>
               <Avatar name="user"/>
-              <Box bg='' maxW='85%' p='4'  rounded='2xl' >
-                <Text color='blackAlpha.800'>
+              <Box bg='' maxW='85%' p='4'  rounded='2xl' border='1px' borderColor='blackAlpha.200'>
+                <Text color='blackAlpha.800' >
                   {message.content}
                 </Text>  
               </Box>
