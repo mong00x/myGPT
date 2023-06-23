@@ -21,6 +21,8 @@ function App() {
     addMessage("bot", "");  // Placeholder bot message
     setIsLoading(true);
 
+    // development
+    if (!Window.process.env.NODE_ENV || Window.process.env.NODE_ENV === 'development') {
     axios.post('http://localhost:8000/chat/', { prompt: message })
       .then((response) => {
         // Replace the placeholder bot message with the actual response
@@ -33,6 +35,22 @@ function App() {
       }, (error) => {
         console.log(error);
       });
+    } else {
+      // production
+      axios.post('https://chatbot-ai.herokuapp.com/chat/', { prompt: message })
+      .then((response) => {
+        // Replace the placeholder bot message with the actual response
+        setMessages(prevMessages => {
+          const updatedMessages = [...prevMessages];
+          updatedMessages[updatedMessages.length - 1].content = response.data.response.content;
+          return updatedMessages;
+        });
+        setIsLoading(false);
+      }, (error) => {
+        console.log(error);
+      });
+    }
+
   };
 
   return (
