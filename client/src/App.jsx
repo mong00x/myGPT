@@ -26,7 +26,7 @@ function App() {
     
     if (import.meta.env.MODE === 'production') {
       // production
-      axios.post('http://3.27.164.53:8000/chat/', { prompt: message })
+      axios.post('http://www.myopenaiapi.net/chat/', { prompt: message })
       .then((response) => {
         // Replace the placeholder bot message with the actual response
         setMessages(prevMessages => {
