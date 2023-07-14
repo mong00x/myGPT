@@ -20,19 +20,21 @@
     scroll-behavior: smooth;
     background-color: #DFD5EC;
     overflow: hidden;
+    max-width: 100vw;
+    max-height: 100vh;
   }
   
   body{
     background-color: transparent !important;
-    height:100vh;
     overflow: hidden;
-
+    max-width: 100vw;
+    max-height: 100vh;
   }
 
   .patterned-circle {
     position:absolute;
-    bottom:-3%;
-    right: -3%;
+    bottom: 40%;
+    margin-left: 60%;
     z-index: -1;
     width: 56vw;
     height: 60vh;

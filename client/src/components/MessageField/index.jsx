@@ -6,11 +6,13 @@ import {
   Text, 
   Stack,
   SkeletonText,
+  useMediaQuery
 } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 
 const MessageField = ({messages, isLoading}) => {
   const endOfMessagesRef = useRef(null);
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)')
 
   const scrollToBottom = () => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -22,7 +24,7 @@ const MessageField = ({messages, isLoading}) => {
 
   return (
     <Box  
-      px='12' 
+      px={isLargerThan800 ? '12' : ''}
       mb='4' 
       height='100%' 
       overflowY='auto' 

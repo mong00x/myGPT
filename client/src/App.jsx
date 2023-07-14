@@ -11,6 +11,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([]);
 
+
   const addMessage = (role, content) => {
     // add a new message to the list
     setMessages(prevMessages => [...prevMessages, { role, content }]);
@@ -60,16 +61,15 @@ function App() {
 
   return (
       
-    <Box fontFamily='roboto' pt='8'>
-      <div className="patterned-circle"></div>
-      <Box>
+    <Box fontFamily='roboto'   >
+      <Box className="patterned-circle" position="absolute" />
+      <Box mt="12">
         <Header />
         <Container 
           maxW="container.xl"
           height="91vh"
-          rounded="16"
+          rounded="20px"
           bg='#FFFBFE'
-          blur='8px'
         >
           <Flex flexDir='column' justify='space-between' h='100%' >
           <MessageField messages={messages} isLoading={isLoading} />

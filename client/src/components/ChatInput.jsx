@@ -1,9 +1,10 @@
-import { Flex, Button, Input } from "@chakra-ui/react"
+import { Flex, Button, Input,useMediaQuery  } from "@chakra-ui/react"
 import PropTypes from 'prop-types'
 import { useState } from 'react';
 
 const ChatInput = ({ sendMessage, isLoading }) => {
   const [message, setMessage] = useState("");
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)')
 
   // debounce
   const debounce = (func, wait) => {
@@ -44,7 +45,7 @@ const ChatInput = ({ sendMessage, isLoading }) => {
       <Flex 
         gap={4} 
         rounded={8} 
-        mx='8' 
+        mx={isLargerThan800 ? '12' : ''} 
         justify='center'
         alignItems='center'
         mb='8'
