@@ -47,7 +47,7 @@ Frontend dependencies:
 * framer-motion: A production-ready motion library for React.
 * axios: Promise-based HTTP client for the browser and Node.js.
 
-## Backend dependencies:
+Backend dependencies:
 
 * Django and djangorestframework: High-level Python Web framework and powerful and flexible toolkit for building Web APIs.
 * django-cors-headers: A Django App that adds Cross-Origin Resource Sharing (CORS) headers to responses.
