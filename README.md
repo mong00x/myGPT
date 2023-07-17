@@ -14,8 +14,7 @@ Install the required dependencies:
 cd /client
 npm install
 ```
-* server side:
-create your own python virtual environment and then:
+* for the server side, create your own python virtual environment and then:
 ```
 cd /server
 pip3 install -r requirements.txt
