@@ -9,12 +9,12 @@ git clone https://github.com/mong00x/myGPT.git
 cd myGPT
 ```
 Install the required dependencies:
-• client side:
+* client side:
 ```
 cd /client
 npm install
 ```
-• server side:
+* server side:
 create your own python virtual environment and then:
 ```
 cd /server
