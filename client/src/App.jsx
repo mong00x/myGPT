@@ -61,7 +61,7 @@ function App() {
 
   return (
       
-    <Box fontFamily='roboto'   >
+    <Box fontFamily='roboto'>
       <Box className="patterned-circle" position="absolute" />
       <Box mt="12">
         <Header />
