@@ -26,7 +26,6 @@ const MessageField = ({messages, isLoading}) => {
     <Box  
       px={isLargerThan800 ? '12' : ''}
       mb='4' 
-      height='100%' 
       overflowY='auto' 
       rounded='12' 
       backgroundColor='#FFFBFE' 
@@ -34,7 +33,7 @@ const MessageField = ({messages, isLoading}) => {
       <Stack>
         {messages.map((message, index) => (
           message.role === "bot" ? (
-            <Flex gap='4' py='4' flexDir='reverse' key={index}>
+            <Flex gap='4' py='4' flexDir='reverse' key={index} ref={endOfMessagesRef}>
               <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence"/>
               <Box bg='blackAlpha.50'  maxW='85%' p='4'  rounded='2xl' >
                   {isLoading && index === messages.length - 1
@@ -54,7 +53,7 @@ const MessageField = ({messages, isLoading}) => {
             </Flex>
           ) 
           :(
-            <Flex gap='4' py='4' flexDir='row-reverse' key={index}>
+            <Flex gap='4' py='4' flexDir='row-reverse' key={index} >
               <Avatar name="user"/>
               <Box bg='' maxW='85%' p='4'  rounded='2xl' border='1px' borderColor='blackAlpha.200'>
                 <Text color='blackAlpha.800' >
@@ -65,7 +64,6 @@ const MessageField = ({messages, isLoading}) => {
           )
           
         ))}
-        <div ref={endOfMessagesRef} />
       </Stack>
     </Box>
   )

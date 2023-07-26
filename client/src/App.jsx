@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import MessageField from './components/MessageField'
 import ChatInput from './components/ChatInput'
-import { Box, Container,Flex } from '@chakra-ui/react'
+import { Box, Container,Flex, useMediaQuery } from '@chakra-ui/react'
 import {useState} from 'react'
 import axios from 'axios'
 
@@ -10,6 +10,7 @@ import axios from 'axios'
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState([]);
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)')
 
 
   const addMessage = (role, content) => {
@@ -62,16 +63,21 @@ function App() {
   return (
       
     <Box fontFamily='roboto'>
-      <Box className="patterned-circle" position="absolute" />
-      <Box mt="12">
-        <Header />
+      <Box className="patterned-circle" position="absolute" display={isLargerThan800 ? "" : "none"} />
+      <Box mt={isLargerThan800 ? "12" : "4"}>
         <Container 
           maxW="container.xl"
-          height="91vh"
+          height={isLargerThan800 ? "90vh" : "95vh"}
           rounded="20px"
           bg='#FFFBFE'
+          m="auto"
+          display="flex"
+          flexDir="column"
+          justifyContent="space-between"
         >
-          <Flex flexDir='column' justify='space-between' h='100%' >
+        <Header />
+
+          <Flex flexDir='column' justify='space-between' h='90%' >
           <MessageField messages={messages} isLoading={isLoading} />
             <ChatInput sendMessage={sendMessage} isLoading={isLoading} />
           </Flex>
